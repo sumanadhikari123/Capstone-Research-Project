@@ -1,0 +1,12 @@
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+const here=path.dirname(fileURLToPath(import.meta.url));
+const artifactPath=path.resolve(here,"../artifacts/contracts/PharmaTraceability.sol/PharmaTraceability.json");
+if(!fs.existsSync(artifactPath)) throw new Error("Artifact missing. Run npm run compile first.");
+const artifact=JSON.parse(fs.readFileSync(artifactPath,"utf8"));
+const required=["createProduct","createBatch","createShipment","transferBatch","receiveBatch","verifyBatch","dispenseBatch","updateComplianceStatus","getBatchHistory","verifyHistoryIntegrity", "getOrganizationAddress", "pendingShipmentDestination"];
+const names=artifact.abi.filter(x=>x.type==='function').map(x=>x.name);
+const missing=required.filter(x=>!names.includes(x));
+if(missing.length) throw new Error(`Missing ABI functions: ${missing.join(', ')}`);
+console.log(`Artifact OK: ${artifact.contractName}; required functions: ${required.length}`);

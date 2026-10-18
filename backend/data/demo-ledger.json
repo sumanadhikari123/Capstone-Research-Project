@@ -1,0 +1,47 @@
+{
+  "products": {
+    "P3": {
+      "productId": "P3",
+      "productName": "Medicine",
+      "manufacturerId": "ORG-MAN-001"
+    }
+  },
+  "batches": {
+    "B3": {
+      "batchId": "B3",
+      "productId": "P3",
+      "manufacturerId": "ORG-MAN-001",
+      "currentLocation": "Auckland",
+      "status": "MANUFACTURED",
+      "verificationStatus": "PENDING",
+      "currentOwner": "ORG-MAN-001",
+      "createdAt": "2026-10-01T04:10:03.779Z",
+      "updatedAt": "2026-10-01T04:10:03.779Z"
+    }
+  },
+  "history": {
+    "B3": [
+      {
+        "txId": "TX-4fb0bd15-ed9",
+        "eventId": "EVT-a26601e8-9ef",
+        "eventType": "BATCH_CREATED",
+        "actor": "ORG-MAN-001",
+        "timestamp": "2026-10-01T04:10:03.779Z",
+        "payload": {
+          "batchId": "B3",
+          "productId": "P3",
+          "manufacturerId": "ORG-MAN-001",
+          "currentLocation": "Auckland",
+          "status": "MANUFACTURED",
+          "verificationStatus": "PENDING",
+          "currentOwner": "ORG-MAN-001",
+          "createdAt": "2026-10-01T04:10:03.779Z",
+          "updatedAt": "2026-10-01T04:10:03.779Z"
+        },
+        "eventHash": "9b690158c57173a2ab03035ce7a4975a2d12c12f4566c1ae6ce6d963c6f88aa4",
+        "previousHash": "GENESIS"
+      }
+    ]
+  },
+  "shipments": {}
+}

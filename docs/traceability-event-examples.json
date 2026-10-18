@@ -1,0 +1,25 @@
+[
+  {
+    "eventVersion": "1.0",
+    "eventId": "EVT-001",
+    "eventType": "BATCH_CREATED",
+    "timestamp": "2026-09-28T00:00:00Z",
+    "organizationId": "ORG-MAN-001",
+    "productId": "MED-001",
+    "batchId": "BATCH-001",
+    "location": "Auckland",
+    "status": "MANUFACTURED"
+  },
+  {
+    "eventVersion": "1.0",
+    "eventId": "EVT-002",
+    "eventType": "BATCH_TRANSFERRED",
+    "timestamp": "2026-09-28T01:00:00Z",
+    "organizationId": "ORG-MAN-001",
+    "productId": "MED-001",
+    "batchId": "BATCH-001",
+    "location": "Hamilton",
+    "status": "IN_TRANSIT",
+    "recipientOrganizationId": "ORG-DIS-001"
+  }
+]

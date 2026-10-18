@@ -1,0 +1,54 @@
+# Hyperledger Fabric Network Setup
+
+This project is designed for a Fabric 2.x permissioned network. The local demo mode does not require Docker/Fabric.
+
+## Recommended development approach
+
+Use the official `fabric-samples/test-network` as the network foundation. For the capstone prototype, model these organizations:
+
+- ManufacturerMSP
+- DistributorMSP
+- PharmacyMSP
+- RegulatorMSP
+
+The first working iteration can use a controlled channel such as `pharmachannel`.
+
+## Suggested deployment sequence
+
+From the official Fabric samples `test-network` directory:
+
+```bash
+./network.sh down
+./network.sh up createChannel -c pharmachannel
+```
+
+Deploy the JavaScript chaincode from this repository using the Fabric samples chaincode deployment mechanism. The exact command varies with the Fabric samples release selected for the final experiment, so record the release/commit used in the thesis.
+
+After deployment, configure the backend:
+
+```env
+FABRIC_MODE=fabric
+FABRIC_MSP_ID=ManufacturerMSP
+FABRIC_CHANNEL=pharmachannel
+FABRIC_CHAINCODE=pharmatrace
+FABRIC_GATEWAY_ENDPOINT=<peer-gateway-endpoint>
+FABRIC_TLS_CERT_PATH=<tls-root-cert>
+FABRIC_CERT_PATH=<client-cert>
+FABRIC_PRIVATE_KEY_PATH=<private-key>
+```
+
+## Important prototype limitation
+
+The demo backend authenticates application users using JWT while the Fabric mode uses an organization/client certificate configured for the backend process. For a production deployment, each organization should have independently managed Fabric identities and the application authorization layer should be mapped to those identities.
+
+## Evidence to collect
+
+- Network startup logs
+- Channel creation
+- Chaincode installation/approval/commit
+- Successful ProductCreated transaction
+- Successful BatchCreated transaction
+- Transfer/Receive/Verify transactions
+- Ledger queries
+- Block/transaction identifiers
+- Screenshots of the relevant Fabric CLI output

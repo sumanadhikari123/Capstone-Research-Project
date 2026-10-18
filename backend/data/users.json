@@ -1,0 +1,34 @@
+[
+  {
+    "id": "USR-MAN-001",
+    "username": "manufacturer",
+    "passwordHash": "$scrypt$N=16384,r=8,p=1$417ulgNsjAKD32n0ckS6IQ$Ursa_IGQMrYP2r8-n6L68gzG3WaB4q197jATZohNG95w9EpNIkmnSCM5Ns63j3ydkye1jgJlG_Lz0TTNusLXqQ",
+    "role": "MANUFACTURER",
+    "organizationId": "ORG-MAN-001",
+    "mspId": "ManufacturerMSP"
+  },
+  {
+    "id": "USR-DIS-001",
+    "username": "distributor",
+    "passwordHash": "$scrypt$N=16384,r=8,p=1$WRutA0TJgajXTKoys4woWA$jRomwa0FzIDtsS4O23ZS-BojjgWXuBY41wu6Y-5TDKacJSv_3xdZIHj0BoUSp7sYw905tPi1BYh3jTvrinSOvw",
+    "role": "DISTRIBUTOR",
+    "organizationId": "ORG-DIS-001",
+    "mspId": "DistributorMSP"
+  },
+  {
+    "id": "USR-PHA-001",
+    "username": "pharmacy",
+    "passwordHash": "$scrypt$N=16384,r=8,p=1$bJNGcLz4_y5wKiw3APWa0w$qqs3XPTsBYdarmVVYzOavC-AVMH9SiVBTR1_nt8L7jBFaU5v15Ng6J6VZkly3zFeyZDOsfEGYAEkOTUGRGTk1Q",
+    "role": "PHARMACY",
+    "organizationId": "ORG-PHA-001",
+    "mspId": "PharmacyMSP"
+  },
+  {
+    "id": "USR-REG-001",
+    "username": "regulator",
+    "passwordHash": "$scrypt$N=16384,r=8,p=1$6pQ12kV1O9uNDHkqnSDnCg$DcAiFeG8_eZ-tQdHvwHAjWr0oDLPrpSdhlYaW_q1A6R_blzkS9OzJPPjWjp0MOziDfbhDtbinHK-2MGar3Ii1Q",
+    "role": "REGULATOR",
+    "organizationId": "ORG-REG-001",
+    "mspId": "RegulatorMSP"
+  }
+]

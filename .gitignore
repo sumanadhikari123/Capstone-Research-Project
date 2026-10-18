@@ -1,0 +1,9 @@
+node_modules/
+**/node_modules/
+.env
+**/.env
+blockchain/artifacts/
+blockchain/cache/
+backend/data/uploads/
+backend/data/external-ledger.json
+*.log

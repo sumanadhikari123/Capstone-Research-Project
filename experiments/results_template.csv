@@ -1,0 +1,5 @@
+experiment,environment,workload,concurrency,success_count,failure_count,tps,avg_latency_ms,p95_latency_ms,cpu_percent,memory_mb,notes
+blockchain,REAL_FABRIC,100,10,,,,,,, ,
+api,DEMO,100,10,,,,,,, ,
+interoperability,DEMO,100,10,,,,,,, ,
+integrity,DEMO,1,1,,,,,,, ,

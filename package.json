@@ -1,0 +1,23 @@
+{
+  "name": "pharmatrace-ethereum-windows",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "blockchain:compile": "npm --prefix blockchain run compile",
+    "blockchain:test": "npm --prefix blockchain run test",
+    "blockchain:node": "npm --prefix blockchain run node",
+    "blockchain:deploy": "npm --prefix blockchain run deploy",
+    "blockchain:check": "npm --prefix blockchain run check",
+    "backend:install": "npm --prefix backend install",
+    "backend:test": "npm --prefix backend test",
+    "backend:db:init": "npm --prefix backend run db:init",
+    "backend:dev": "npm --prefix backend run dev",
+    "frontend:install": "npm --prefix frontend install",
+    "frontend:dev": "npm --prefix frontend run dev",
+    "frontend:build": "npm --prefix frontend run build",
+    "blockchain:check:runtime": "npm --prefix blockchain run check:runtime",
+    "blockchain:smoke": "npm --prefix blockchain run smoke",
+    "blockchain:verify": "npm --prefix blockchain run verify:deployment"
+  }
+}

@@ -1,0 +1,87 @@
+# Real Hyperledger Fabric setup
+
+This guide converts the application from a UI prototype into a real permissioned-ledger deployment. The backend should use `FABRIC_MODE=fabric` and a client identity that belongs to the organization whose transactions it submits.
+
+## 1. Prerequisites
+- Windows 10/11 with Docker Desktop.
+- WSL2 enabled and Docker Desktop WSL integration enabled.
+- Node.js 24 LTS in the Windows development environment.
+- A Hyperledger Fabric 2.x network with peer gateway access.
+- Four logical organizations in the project model: Manufacturer, Distributor, Pharmacy and Regulator.
+
+## 2. Fabric network
+Use the official Hyperledger Fabric samples as the local network foundation. Create a channel named `pharmachannel` (or change the application configuration to match your network).
+
+Example from the Fabric `test-network` directory in WSL:
+```bash
+./network.sh down
+./network.sh up createChannel -c pharmachannel
+```
+
+Deploy this repository's JavaScript chaincode using the chaincode deployment process for the Fabric samples release you selected. Record the exact Fabric samples release/commit in the final report.
+
+## 3. Backend configuration
+In `backend/.env`:
+```env
+PORT=4000
+JWT_SECRET=<strong-random-secret>
+JWT_EXPIRES_IN=8h
+FABRIC_MODE=fabric
+USE_POSTGRES=true
+DATABASE_URL=postgresql://pharma:pharma@localhost:5432/pharma_traceability
+IPFS_API_URL=http://localhost:5001/api/v0
+FABRIC_MSP_ID=ManufacturerMSP
+FABRIC_CHANNEL=pharmachannel
+FABRIC_CHAINCODE=pharmatrace
+FABRIC_GATEWAY_ENDPOINT=localhost:7051
+FABRIC_TLS_CERT_PATH=C:\path\to\peer\tls\ca.crt
+FABRIC_CERT_PATH=C:\path\to\user\signcerts\cert.pem
+FABRIC_PRIVATE_KEY_PATH=C:\path\to\user\keystore\priv_sk
+```
+
+The certificate, key and TLS paths must match the actual organization identity used by the API process. For a multi-organization production deployment, issue and manage distinct identities instead of sharing one backend identity.
+
+## 4. PostgreSQL
+From PowerShell:
+```powershell
+cd "C:\Users\N I T R O 5\Downloads\pharma-blockchain-traceability-capstone-complete\pharma-blockchain-traceability-capstone-complete"
+docker compose up -d postgres
+cd ".\backend"
+npm install
+npm run db:init
+```
+
+## 5. IPFS
+```powershell
+cd "C:\Users\N I T R O 5\Downloads\pharma-blockchain-traceability-capstone-complete\pharma-blockchain-traceability-capstone-complete"
+docker compose up -d ipfs
+```
+
+The application stores a SHA-256 hash on the batch record and can use IPFS for document persistence. Treat the CID as a content address, while the hash is the integrity value used for verification experiments.
+
+## 6. Start the real application
+Backend:
+```powershell
+cd "C:\Users\N I T R O 5\Downloads\pharma-blockchain-traceability-capstone-complete\pharma-blockchain-traceability-capstone-complete\backend"
+npm test
+npm run dev
+```
+
+Frontend:
+```powershell
+cd "C:\Users\N I T R O 5\Downloads\pharma-blockchain-traceability-capstone-complete\pharma-blockchain-traceability-capstone-complete\frontend"
+npm run dev
+```
+
+## 7. Validate real ledger evidence
+Capture:
+- channel creation output;
+- chaincode deployment output;
+- successful Product and Batch transaction IDs;
+- Transfer/Receive/Verify/Dispense transaction IDs;
+- query results from the ledger;
+- block/transaction evidence where available;
+- application audit records in PostgreSQL;
+- document CID and SHA-256 evidence when documents are used.
+
+Only publish measured Fabric latency/TPS results in the thesis after the real network experiment has been executed.

@@ -1,0 +1,27 @@
+Verification status for the current Ethereum/Hardhat source package:
+
+JavaScript syntax checks: PASS
+React JSX transpilation/parsing: PASS
+JSON parsing checks: PASS
+Local demo tests shipped with the repository: present
+
+Not executed in this build workspace:
+- npm dependency installation to completion
+- Hardhat Solidity compilation
+- Live Hardhat node deployment
+- Ethereum lifecycle smoke test
+- Ethereum TPS/latency benchmark
+- Docker PostgreSQL/IPFS integration test
+- Human-participant/TAM evaluation
+
+Run on Windows after dependency installation:
+
+1. npm --prefix blockchain install
+2. npm run blockchain:compile
+3. npm run blockchain:check
+4. npm run blockchain:node
+5. npm run blockchain:deploy
+6. npm run blockchain:check:runtime
+7. npm run blockchain:smoke
+
+Only record claims supported by the actual command output from the development machine.

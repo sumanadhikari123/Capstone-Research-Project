@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/pharma/trace-event.schema.json",
+  "title": "Standard Pharmaceutical Traceability Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["eventVersion","eventId","eventType","timestamp","sourceSystemId","organizationId","productId","batchId","location","status"],
+  "properties": {
+    "eventVersion": {"type":"string","pattern":"^1\\.0$"},
+    "eventId": {"type":"string","minLength":3},
+    "eventType": {"type":"string","enum":["PRODUCT_CREATED","BATCH_CREATED","SHIPMENT_CREATED","BATCH_TRANSFERRED","BATCH_RECEIVED","BATCH_VERIFIED","BATCH_DISPENSED","COMPLIANCE_UPDATED"]},
+    "timestamp": {"type":"string","format":"date-time"},
+    "sourceSystemId": {"type":"string","minLength":2},
+    "destinationSystemId": {"type":"string"},
+    "organizationId": {"type":"string","minLength":3},
+    "productId": {"type":"string","minLength":3},
+    "batchId": {"type":"string","minLength":3},
+    "location": {"type":"string","minLength":2},
+    "status": {"type":"string","minLength":2},
+    "documentHash": {"type":"string","pattern":"^[a-fA-F0-9]{64}$"},
+    "privacyClass": {"type":"string","enum":["PUBLIC","CONFIDENTIAL","REGULATED"]},
+    "recipientOrganizationId": {"type":"string"},
+    "trackingNumber": {"type":"string"},
+    "complianceStatus": {"type":"string"},
+    "note": {"type":"string"}
+  }
+}
